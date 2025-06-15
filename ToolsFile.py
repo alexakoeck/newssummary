@@ -120,6 +120,7 @@ def search_web(region):
         tools=tools,
         llm=llm,
         agent="zero-shot-react-description",
+        handle_parsing_errors=True,
         verbose=False)
 
     response = agent.invoke(f"List at least 1 and up to 4 most reliable and unbiased news outlets in {region} in any language and give their URLs in form of a python list.")
