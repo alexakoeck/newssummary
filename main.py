@@ -153,7 +153,8 @@ agent=initialize_agent(
     llm=llm,
     agent="zero-shot-react-description", ##best option for none chat agent
     handle_parsing_errors=True,
-    verbose=False ##in application do not want to show all reasoning steps activate for tests
+    return_intermediate_steps=True, 
+    verbose=True ##in application do not want to show all reasoning steps activate for tests
 )
 
 
