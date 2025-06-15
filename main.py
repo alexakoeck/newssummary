@@ -100,7 +100,7 @@ prefix="""You are a new-summarization Agent that summarizes events related to th
 
     For each input query, follow these reasoning steps:
     1. you need to detect the region boud to topics in the promt (use 'FindRegion' Tool)
-    2. Identify reliable websites using teh findRegion or Fidn AdditionalWebsites tools only.
+    2. Find websites using FindAdditionalWebsites: Identify reliable websites using the FindRegion or FindAdditionalWebsites tools only.
     3. Retrieve relevant news articles from web and your databases matching the prompts only from the previously defined websites
     4. Sometimes you want to match the language of the articles for better summarization
     5. Summarize the information from all selected articles in a clear, factual, and concise manner using the same language as the query.
