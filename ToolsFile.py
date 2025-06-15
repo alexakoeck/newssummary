@@ -175,7 +175,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
         filter_expression = filter_expression or kw
 
         # Step 2: Scan the table
-    response = table.scan(FilterExpression=filter_expression)
+    response = table.scan(FilterExpression=Attr('Keywords').contains(filter_expression)
     items = response['Items']
 
     # Step 3: Filter items that match at least 3 keywords
