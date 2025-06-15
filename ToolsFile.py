@@ -85,7 +85,7 @@ def get_news_sources(query):
     #print(f"Language region: {lang_region}, Topic region: {topic_region or 'Unknown'}")
 
     region = topic_region if topic_region else lang_region
-    websites= REGIONAL_SITES.get(region, [])
+    websites= REGIONAL_SITES.get(region, [])[1]
     return region, websites
 
 ##if websites is empty search web for reliabel websites make more flexible
