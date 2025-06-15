@@ -8,7 +8,13 @@ Original file is located at
 """
 
 #region choice and then in the end translate based on region choice
-def detect_language_region(text,llm):
+def detect_language_region(text):
+    GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
+
+    llm = GoogleGenerativeAI(
+        model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
+        google_api_key=GOOGLE_API_KEY
+    )
     try:
         prompt=f"What language is used in this prompt? reply with only a 2-letter lowecase ISO 639-1 language code (like 'en', 'de', 'ko').\n\nQuery: {text}"
         response= llm.invoke(prompt)
@@ -18,13 +24,25 @@ def detect_language_region(text,llm):
         lang = "en"
     return LANG_TO_REGION.get(lang, 'others')
 
-def detect_topic_region_llm(query, llm):
+def detect_topic_region_llm(query):
+    GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
+
+    llm = GoogleGenerativeAI(
+        model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
+        google_api_key=GOOGLE_API_KEY
+    )
     prompt = f"What country is this query about? Reply with only the 2-letter ISO country code.\n\nQuery: {query}"
     response = llm.invoke(prompt)
     code = response.strip().upper() if isinstance(response, str) else response.content.strip().upper()
     return code #if code in REGIONAL_SITES else None
 
-def get_news_sources(query, llm):
+def get_news_sources(query):
+    GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
+
+    llm = GoogleGenerativeAI(
+        model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
+        google_api_key=GOOGLE_API_KEY
+    )
     lang_region = detect_language_region(query)
     topic_region = detect_topic_region_llm(query, llm)
     #print(f"Language region: {lang_region}, Topic region: {topic_region or 'Unknown'}")
@@ -34,8 +52,15 @@ def get_news_sources(query, llm):
     return region, websites
 
 ##if websites is empty search web for reliabel websites make more flexible
-def search_web(region, llm):
+def search_web(region):
     ##brave search
+    GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
+
+    llm = GoogleGenerativeAI(
+        model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
+        google_api_key=GOOGLE_API_KEY
+    )
+    
     api_key = "BSAvATtaHe21yNPssGoIw8tRKGzBhI9"
     search = BraveSearch.from_api_key(api_key=api_key, search_kwargs={"count": 3})
 
@@ -67,7 +92,14 @@ def search_web(region, llm):
 #def extract summaries
 
 # amazon Kendra not sufficient for real time search so use RAG agent from langchain or haystack
-def search_articles(sites, prompt,prompt_lang, table, bucket_name, llm):
+def search_articles(sites, prompt,prompt_lang, table, bucket_name):
+    GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
+
+    llm = GoogleGenerativeAI(
+        model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
+        google_api_key=GOOGLE_API_KEY
+    )
+    
     #1 extract keywords from prompt ##avoid extra ebmedding and intensive retrival
     phrases= comprehend.detect_key_phrases(Text=prompt, LanguageCode=prompt_lang) ##or 'en'
     keys=[phrase['Text'] for phrase in phrases['KeyPhrases']]
@@ -159,7 +191,14 @@ def search_articles(sites, prompt,prompt_lang, table, bucket_name, llm):
     return articles ## should be in form of list of strings
 
 #a tool to translate each article for easier summarization  choosing most overlapping language response can be done by llm
-def translate_articles(articles, new_language, llm):
+def translate_articles(articles, new_language):
+    GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
+
+    llm = GoogleGenerativeAI(
+        model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
+        google_api_key=GOOGLE_API_KEY
+    )
+    
     trans_articles=[]
 
     for article in articles:
