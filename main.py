@@ -47,8 +47,8 @@ from newspaper import Article
 from langchain_community.utilities import GoogleSerperAPIWrapper
 import os
 
-translate = boto.client('translate')
-s3= boto.client('s3')
+translate = boto3.client('translate')
+s3= boto3.client('s3')
 comprehend = boto3.client('comprehend')
 dynamodb= boto3.client('dynamodb')
 table_name='Keywords'
