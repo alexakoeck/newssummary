@@ -91,7 +91,7 @@ def get_news_sources(query):
     if region in REGIONAL_SITES:
         websites= REGIONAL_SITES[region]
     else:
-        websites = none
+        websites = None
     return region, websites
 
 ##if websites is empty search web for reliabel websites make more flexible
