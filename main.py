@@ -8,6 +8,7 @@ Original file is located at
 """
 
 #imports
+import spacy
 import boto3
 from boto3.dynamodb.conditions import Attr
 import json
@@ -176,9 +177,23 @@ print(response)  ##for checking
 #extract topic
 #prompt_topic=f'extract the topic in less than 10 words from the following text {response}'
 #topic_string=llm.invoke(prompt_topic)
-key_phrases= comprehend.detect_key_phrases(Text=response, LanguageCode=prompt_lang) ##or 'en'
-keystring=[phrase['Text'] for phrase in key_phrases['KeyPhrases']]
-topic= "_".join(keystring)
+#key_phrases= comprehend.detect_key_phrases(Text=response, LanguageCode=prompt_lang) ##or 'en'
+#keystring=[phrase['Text'] for phrase in key_phrases['KeyPhrases']]
+
+
+# Load the English model
+nlp = spacy.load("en_core_web_sm")
+# Process the text
+doc = nlp(query)
+
+# Extract named entities
+entities = [(ent.text, ent.label_) for ent in doc.ents]
+
+# Optionally filter by entity types
+important_types = {"PERSON", "ORG", "GPE","LOC"} ##not date
+keylist = [ent.text for ent in doc.ents if ent.label_ in important_types]
+
+topic= "_".join(keylist)
 ## will be really long but needs to be higher chance of not exact match because otehrvise response will be replaced in S3
 
 #create json
@@ -195,9 +210,7 @@ push_to_S3(json_file,topic)
 
 
 #put keywords and s3 key to dynamo db for rag
-prompt_phrases= comprehend.detect_key_phrases(Text=query, LanguageCode=prompt_lang) ##or 'en'
-keys=[phrase['Text'] for phrase in prompt_phrases['KeyPhrases']]
-
+keys=keylist
 s3_key=f'{topic}.json'
 table.put_item(
     Item={
