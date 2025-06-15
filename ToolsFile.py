@@ -141,7 +141,8 @@ def search_web(region):
 def search_articles(input): #(sites, prompt,prompt_lang, table, bucket_name):
     print(input)
     list = list(input.keys())
-    sites= input[list[1]
+    sites= input[list[1]]
+    print(sites)
     
     GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
 
