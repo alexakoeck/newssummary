@@ -129,7 +129,7 @@ tools1=[
     Tool(
         name='NewsArticleSearch',
         func=search_articles,
-        description='input needs : websites, query, table and bucket_name. this tool is for article retrival and lets you search for previous responses matching the prompt and new articles from predefined websites.'
+        description='input needs : websites, query, prompt_language, table and bucket_name. this tool is for article retrival and lets you search for previous responses matching the prompt and new articles from predefined websites.'
 ),
     Tool(
         name='TranslateArticles',
