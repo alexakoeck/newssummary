@@ -246,16 +246,17 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     # Remove comments (everything after # on each line)
         cleaned = "\n".join([line.split("#")[0].strip() for line in code_block.splitlines()])
         websites = ast.literal_eval(cleaned)
-
-    for url in websites:
-        doc=extract_article_body(url)
-        web_articles.append(doc['text'])
+    if len(websites) >= 1:
+        for url in websites:
+            doc=extract_article_body(url)
+            web_articles.append(doc['text'])
 
     #6 merge two lists ##if time only select 5 pest out of all only if list length is over 7
     articles= s3_summs+web_articles
-
-    return articles ## should be in form of list of strings
-
+    if len(artlicles) >= 1 :
+        return articles ## should be in form of list of strings
+    else:
+        return 'try again with longer prompt or additional websites'
 #a tool to translate each article for easier summarization  choosing most overlapping language response can be done by llm
 def translate_articles(articles, new_language):
     GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
