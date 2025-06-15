@@ -155,7 +155,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     prompt=data.get(keys[1], )
     prompt_lang=data.get(keys[2],)
 
-    print(sites)
+   # print(sites)
 
     GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
 
@@ -203,7 +203,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
 
     keywords=keys
     api_key = "BSAvATtaHe21yNPssGoIw8tRKGzBhI9"
-    tool = BraveSearch.from_api_key(api_key=api_key, search_kwargs={"count": 3})
+    tool = BraveSearch.from_api_key(api_key=api_key)
 
     def extract_article_body(url):
         try:
@@ -224,7 +224,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     tools=[Tool(
         name="BraveSearchArticles",
         func=tool.run,
-        description="Useful for finding good news articles from predefined websites only."
+        description="Useful for finding matching news articles from predefined websites only."
         )]
 
     agent = initialize_agent(
