@@ -185,18 +185,19 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     s3_keys=[]
     for item in min_items:
         s3_keys.append(item['S3Key'])
-
+    s3_summs = []   
+    if len(s3_keys) >= 1:
     #3 extract texts form these files
-    s3_summs = []
+        
 
-    for key in s3_keys:
-        response = s3.get_object(Bucket=bucket_name, Key=key)
-        content = response['Body'].read()
-        json_data = json.loads(content)
+        for key in s3_keys:
+            response = s3.get_object(Bucket=bucket_name, Key=key)
+            content = response['Body'].read()
+            json_data = json.loads(content)
 
-    summary = json_data.get('summary')
-    if summary:
-        s3_summs.append(summary)
+        summary = json_data.get('summary')
+        if summary:
+            s3_summs.append(summary)
 
     #4 websearch for 3-5 more articles with semantic similarity websearch
 
