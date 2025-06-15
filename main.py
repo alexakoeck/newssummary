@@ -152,6 +152,7 @@ agent=initialize_agent(
     tools=tools,
     llm=llm,
     agent="zero-shot-react-description", ##best option for none chat agent
+    handle_parsing_errors=True,
     verbose=False ##in application do not want to show all reasoning steps activate for tests
 )
 
