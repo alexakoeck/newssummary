@@ -122,7 +122,7 @@ def search_web(region):
         agent="zero-shot-react-description",
         verbose=False)
 
-    response = agent.invoke(f"List the top 3 to 4 most reliable and unbiased news outlets in {region} in any language and give their URLs in form of a python list.")
+    response = agent.invoke(f"List at least 1 and up to 4 most reliable and unbiased news outlets in {region} in any language and give their URLs in form of a python list.")
     output= response['output']
     ##extract the website URLs in a LIst that can be passed to kendra as the predefined ones
 
