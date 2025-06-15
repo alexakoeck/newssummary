@@ -231,9 +231,10 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
         tools=tools,
         llm=llm,
         agent="zero-shot-react-description",
+        handle_parsing_error=True,
         verbose=False)
 
-    response = agent.invoke(f"List most matching general and specific and recent (not older than 6 months)news articles from and only from{sites} matching {prompt} as good as possible\n if no matches for teh prompt try these keywords{keywords}")
+    response = agent.invoke(f"List at least one most matching general and specific and recent (not older than 6 months)news articles from and only from{sites} matching {prompt} as good as possible\n if no matches for teh prompt try these keywords{keywords}")
     output= response['output']
 
 
