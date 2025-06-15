@@ -115,7 +115,7 @@ input_variables=["input"],
 )
 
 #step 4 agent
-tools=[
+tools1=[
     Tool(
         name='FindRegion' ,
         func=get_news_sources,
@@ -127,9 +127,9 @@ tools=[
         description='this is useful for searching the web fro reiable and unbiased news sources if the FindWebsites tool does not work and returns emty list'
 ),
     Tool(
-        name='NewsMultiSourceSearch',
+        name='NewsArticleSearch',
         func=search_articles,
-        description='this tool is for article retrival and lets you search for previous responses matching the prompt and new articles from predefined websites.'
+        description='input needs : websites, query, table and bucket_name. this tool is for article retrival and lets you search for previous responses matching the prompt and new articles from predefined websites.'
 ),
     Tool(
         name='TranslateArticles',
@@ -149,7 +149,7 @@ tools=[
  # Tool(name='GetPrevResults',func=extract_s3summaries,description='')
 
 agent=initialize_agent(
-    tools=tools,
+    tools=tools1,
     llm=llm,
     agent="zero-shot-react-description", ##best option for none chat agent
     handle_parsing_errors=True,
