@@ -118,32 +118,32 @@ input_variables=["input"],
 tools=[
     Tool(
         name='FindRegion' ,
-        func=get_news_sources(query),
+        func=get_news_sources,
         description='this tool is the initial tool to detect the region boud to the topics of the prompt and choose the reliable websites we can search from news on'
 ),
     Tool(
         name='AddtitionalWebsites',
-        func=search_web(region),
+        func=search_web,
         description='this is useful for searching the web fro reiable and unbiased news sources if the FindWebsites tool does not work and returns emty list'
 ),
     Tool(
         name='NewsMultiSourceSearch',
-        func=search_articles(sites, query, prompt_lang, table, bucket_name),
+        func=search_articles,
         description='this tool is for article retrival and lets you search for previous responses matching the prompt and new articles from predefined websites.'
 ),
     Tool(
         name='TranslateArticles',
-        func=translate_articles(articles,new_language),
+        func=translate_articles,
         description='this tool can help you fro precise translation of the retrieverd articles if you want to match their language for summarization.'
 ),
     Tool(
         name='TranslatePrompt',
-        func=translate_prompt(query, prompt_lang, new_lang),
+        func=translate_prompt,
         description='This allows you to translate the prompt into the region language or another language.'
 ),
     Tool(
         name='ArticleSummarization',
-        func=merge(articles),
+        func=merge,
         description='this tool merges the articles to a clear and comprehensive summary')
 ]
  # Tool(name='GetPrevResults',func=extract_s3summaries,description='')
