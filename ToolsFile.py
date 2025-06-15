@@ -154,28 +154,24 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     sites = data.get(keys[0], )
     prompt=data.get(keys[1], )
     prompt_lang=data.get(keys[2],)
-    
 
     print(sites)
 
- 
-
-    
     GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
 
     llm = GoogleGenerativeAI(
         model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
         google_api_key=GOOGLE_API_KEY
     )
+    keywo = prompt.split()
+    #1 extract keywords from prompt ##avoid extra ebmedding and intensive retrival 
+    #phrases= comprehend.detect_key_phrases(Text=prompt, LanguageCode=prompt_lang) ##or 'en'
+    #keys=[phrase['Text'] for phrase in phrases['KeyPhrases']]
     
-    #1 extract keywords from prompt ##avoid extra ebmedding and intensive retrival
-    phrases= comprehend.detect_key_phrases(Text=prompt, LanguageCode=prompt_lang) ##or 'en'
-    keys=[phrase['Text'] for phrase in phrases['KeyPhrases']]
-
     #2 extract s3 keys with same keywords
         #step1: create a filter for or condition on all key phrases
-    filter_expression = Attr('Keywords').contains(keys[0])
-    for kw in keys[1:]:
+    filter_expression = Attr('Keywords').contains(keywo[0])
+    for kw in keywo[1:]:
         filter_expression = filter_expression | Attr('Keywords').contains(kw)
 
         # Step 2: Scan the table
@@ -183,7 +179,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     items = response['Items']
 
     # Step 3: Filter items that match at least 3 keywords
-    min_items = [item for item in items if len(set(item['Keywords']) & set(search_keywords)) >= 3]
+    min_items = [item for item in items if len(set(item['Keywords']) & set(search_keywords)) >= 1]
 
         # Output the S3 keys
     s3_keys=[]
