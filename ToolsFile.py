@@ -234,12 +234,13 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
         handle_parsing_error=True,
         verbose=True)
 
-    response = agent.invoke(f"List at least one most matching general and specific and recent (not older than 6 months)news articles from and only from{sites} matching {prompt} as good as possible\n if no matches for teh prompt try these keywords{keywords}")
+    response = agent.invoke(f"List at least one most matching general and specific and recent (not older than 6 months)news articles from and only from{sites} matching {prompt} as good as possible\n if no matches for teh prompt try these keywords{keywords} in form of a python list")
     output= response['output']
 
 
     #5 extract full text
     web_articles=[]
+    websites=[]
     match = re.search(r"```python\n(.*?)\n```", output, re.DOTALL)
     if match:
         code_block = match.group(1)
