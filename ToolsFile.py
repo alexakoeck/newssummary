@@ -59,7 +59,10 @@ def detect_language_region(text):
         #print(lang)
     except:
         lang = "en"
-    return LANG_TO_REGION[lang]
+    if lang in LANG:_TO_REGION:
+        return LANG_TO_REGION[lang]
+    else:
+        return "GB"
 
 def detect_topic_region_llm(query):
     GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
@@ -85,7 +88,10 @@ def get_news_sources(query):
     #print(f"Language region: {lang_region}, Topic region: {topic_region or 'Unknown'}")
 
     region = topic_region if topic_region else lang_region
-    websites= REGIONAL_SITES[region]
+    if region in REGIONAL_SITES:
+        websites= REGIONAL_SITES[region]
+    else:
+        websites = none
     return region, websites
 
 ##if websites is empty search web for reliabel websites make more flexible
