@@ -128,7 +128,7 @@ tools=[
 ),
     Tool(
         name='NewsMultiSourceSearch',
-        func=search_articles(sites, query, prompt_lang, table, bucket_name)
+        func=search_articles(sites, query, prompt_lang, table, bucket_name),
         description='this tool is for article retrival and lets you search for previous responses matching the prompt and new articles from predefined websites.'
 ),
     Tool(
