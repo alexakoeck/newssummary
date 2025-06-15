@@ -17,7 +17,7 @@ import warnings
 warnings.simplefilter(action='ignore',category=FutureWarning)
 from langchain_google_genai import GoogleGenerativeAI
 from langchain.agents import initialize_agent, Tool
-from langchain.tools.tavily_search import TavilySearchResults
+#from langchain.tools.tavily_search import TavilySearchResults
 from langchain_core.prompts import PromptTemplate, FewShotPromptTemplate
 
 #region detection
