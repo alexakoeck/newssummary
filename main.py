@@ -8,7 +8,7 @@ Original file is located at
 """
 
 #imports
-import boto
+import boto3
 from boto3.dynamodb.conditions import Attr
 import json
 from langchain_core.prompts import PromptTemplate
