@@ -183,7 +183,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
 
         # Output the S3 keys
     s3_keys=[]
-    for item in filtered_items:
+    for item in min_items:
         s3_keys.append(item['S3Key'])
 
     #3 extract texts form these files
