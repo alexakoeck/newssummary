@@ -172,7 +172,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
         #step1: create a filter for or condition on all key phrases
     filter_expression = keywo[0]
     for kw in keywo[1:]:
-        filter_expression = filter_expression | kw
+        filter_expression = filter_expression or kw
 
         # Step 2: Scan the table
     response = table.scan(FilterExpression=filter_expression)
