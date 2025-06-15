@@ -141,10 +141,13 @@ def search_web(region):
 
 # amazon Kendra not sufficient for real time search so use RAG agent from langchain or haystack
 def search_articles(input): #(sites, prompt,prompt_lang, table, bucket_name):
-    json= '{input}'
-    d=json.loads(s)
-    print(d)
-    print(d['websites'])
+    import ast
+    s = f"{input}"
+    data = ast.literal_eval(s)
+    websites = data.get('websites', [])
+
+    print(websites)
+
  
     print('test')
     
