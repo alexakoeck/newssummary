@@ -90,9 +90,11 @@ def get_news_sources(query):
     region = topic_region if topic_region else lang_region
     if region in REGIONAL_SITES:
         websites= REGIONAL_SITES[region]
+        return websites
     else:
         websites = None
-    return region, websites
+        return region
+  
 
 ##if websites is empty search web for reliabel websites make more flexible
 def search_web(region):
