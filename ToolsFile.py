@@ -59,7 +59,7 @@ def detect_language_region(text):
         #print(lang)
     except:
         lang = "en"
-    if lang in LANG:_TO_REGION:
+    if lang in LANG_TO_REGION:
         return LANG_TO_REGION[lang]
     else:
         return "GB"
