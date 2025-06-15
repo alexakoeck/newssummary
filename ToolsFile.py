@@ -254,7 +254,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
 
     #6 merge two lists ##if time only select 5 pest out of all only if list length is over 7
     articles= s3_summs+web_articles
-    if len(artlicles) >= 1 :
+    if len(articles) >= 1 : ##reached already
         return articles ## should be in form of list of strings
     else:
         return 'try again with longer prompt or additional websites'
