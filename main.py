@@ -199,7 +199,7 @@ keys=[phrase['Text'] for phrase in prompt_phrases['KeyPhrases']]
 s3_key=f'{topic}.json'
 table.put_item(
     Item={
-        "Keywords": keys
+        "Keywords": keys,
         "S3Key": s3_key
     }
 )
