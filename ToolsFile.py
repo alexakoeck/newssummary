@@ -39,9 +39,9 @@ LANG_TO_REGION = {
 }
 
 
-
-
-
+translate = boto3.client('translate', region_name='us-west-2')
+s3= boto3.client('s3', region_name='us-west-2')
+comprehend = boto3.client('comprehend',  region_name='us-west-2')
 
 
 #region choice and then in the end translate based on region choice
