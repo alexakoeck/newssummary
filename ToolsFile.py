@@ -15,7 +15,7 @@ import warnings
 warnings.simplefilter(action='ignore',category=FutureWarning)
 from langchain_google_genai import GoogleGenerativeAI
 from langchain.agents import initialize_agent, Tool
-
+from langchain.chains.summarize import load_summarize_chain
 from langchain_core.prompts import PromptTemplate, FewShotPromptTemplate
 from langchain_community.tools import BraveSearch
 from langchain.agents import initialize_agent, Tool
