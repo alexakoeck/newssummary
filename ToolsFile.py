@@ -140,7 +140,9 @@ def search_web(region):
 # amazon Kendra not sufficient for real time search so use RAG agent from langchain or haystack
 def search_articles(input): #(sites, prompt,prompt_lang, table, bucket_name):
     print(input)
-    sites= input['sites']
+    list = list(input.keys())
+    sites= input[list[1]
+    
     GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
 
     llm = GoogleGenerativeAI(
