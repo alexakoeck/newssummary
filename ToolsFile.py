@@ -224,7 +224,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     tools=[Tool(
         name="BraveSearchArticles",
         func=tool.run,
-        description="Useful for finding matching news articles from predefined websites only."
+        description="Useful for finding news articles from predefined websites."
         )]
 
     agent = initialize_agent(
@@ -234,7 +234,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
         handle_parsing_error=True,
         verbose=True)
 
-    response = agent.invoke(f"List at least 1 matching general or specific news articles (not older than 6 months) from and only from{sites} matching {prompt} as good as possible") #\n if no matches for teh prompt try these keywords{keywords} in form of a python list")
+    response = agent.invoke(f"List at least 1 general or specific news article (not older than 6 months)  from{sites} matching {prompt}") #\n if no matches for teh prompt try these keywords{keywords} in form of a python list")
     output= response['output']
 
 
