@@ -170,9 +170,9 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     
     #2 extract s3 keys with same keywords
         #step1: create a filter for or condition on all key phrases
-    filter_expression = Attr('Keywords').contains(keywo[0])
+    filter_expression = keywo[0]
     for kw in keywo[1:]:
-        filter_expression = filter_expression | Attr('Keywords').contains(kw)
+        filter_expression = filter_expression | kw
 
         # Step 2: Scan the table
     response = table.scan(FilterExpression=filter_expression)
