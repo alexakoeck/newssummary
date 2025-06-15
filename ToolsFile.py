@@ -28,6 +28,23 @@ from newspaper import Article
 from langchain_community.utilities import GoogleSerperAPIWrapper
 import os
 from langdetect import detect
+REGIONAL_SITES = {
+    "GB": ["bbc.com", "theguardian.com"],
+    "DE": ["spiegel.de", "zeit.de", "tagesschau.de"],
+    "KR": ["yonhapnews.co.kr", "koreatimes.co.kr"]
+}
+
+LANG_TO_REGION = {
+    "en": "GB",
+    "de": "DE",
+    "ko": "KR"
+}
+
+
+
+
+
+
 
 #region choice and then in the end translate based on region choice
 def detect_language_region(text):
