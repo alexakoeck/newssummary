@@ -123,7 +123,7 @@ def search_web(region):
         handle_parsing_errors=True,
         verbose=False)
 
-    response = agent.invoke(f"List at least 1 and at most 4 trusted news outlets in {region} in any language and give their URLs in form of a python list.")
+    response = agent.invoke(f"List at least 1 and at most 4 trusted news outlets in {region} in any language and give their URLs in form of a python list with maximal length 10.")
     output= response['output']
     ##extract the website URLs in a LIst that can be passed to kendra as the predefined ones
 
