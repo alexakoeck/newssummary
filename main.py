@@ -61,7 +61,7 @@ query = input("Enter a prompt: ")
 
 #step 1 set up Gemini_API
 ##set keys in environment variables
-GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
 
 llm = GoogleGenerativeAI(
     model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
