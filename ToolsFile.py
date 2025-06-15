@@ -144,6 +144,8 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     dynamodb= boto3.resource('dynamodb', region_name='us-west-2')
     table_name='Keywords'
     table=dynamodb.Table(table_name)
+    s3= boto3.client('s3', region_name='us-west-2')
+    bucket_name='newssummariesagentprojectdl'
     
     import ast
     s = f"{input}"
@@ -152,7 +154,6 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     sites = data.get(keys[0], )
     prompt=data.get(keys[1], )
     prompt_lang=data.get(keys[2],)
-    bucket_name=data.get(keys[3],)
     
 
     print(sites)
