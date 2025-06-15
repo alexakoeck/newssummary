@@ -15,12 +15,10 @@ import warnings
 warnings.simplefilter(action='ignore',category=FutureWarning)
 from langchain_google_genai import GoogleGenerativeAI
 from langchain.agents import initialize_agent, Tool
-from langchain.tools.tavily_search import TavilySearchResults
+
 from langchain_core.prompts import PromptTemplate, FewShotPromptTemplate
 from langchain_community.tools import BraveSearch
 from langchain.agents import initialize_agent, Tool
-from langchain.chat_models import ChatOpenAI
-from langchain.tools.tavily_search import TavilySearchResults
 import ast
 import re
 import requests
