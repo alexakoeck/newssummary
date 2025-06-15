@@ -83,7 +83,7 @@ def get_news_sources(query):
         google_api_key=GOOGLE_API_KEY
     )
     lang_region = detect_language_region(query)
-    topic_region = detect_topic_region_llm(query, llm)
+    topic_region = detect_topic_region_llm(query)
     #print(f"Language region: {lang_region}, Topic region: {topic_region or 'Unknown'}")
 
     region = topic_region if topic_region else lang_region
