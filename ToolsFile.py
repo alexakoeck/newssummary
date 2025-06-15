@@ -36,7 +36,7 @@ def get_news_sources(query, llm):
 ##if websites is empty search web for reliabel websites make more flexible
 def search_web(region, llm):
     ##brave search
-    api_key = os.environ.get("BRAVE_API_KEY")
+    api_key = "BSAvATtaHe21yNPssGoIw8tRKGzBhI9"
     search = BraveSearch.from_api_key(api_key=api_key, search_kwargs={"count": 3})
 
     tools=[Tool(
@@ -67,7 +67,7 @@ def search_web(region, llm):
 #def extract summaries
 
 # amazon Kendra not sufficient for real time search so use RAG agent from langchain or haystack
-def search_articles(sites, prompt,prompt_lang, table, bucket_name):
+def search_articles(sites, prompt,prompt_lang, table, bucket_name, llm):
     #1 extract keywords from prompt ##avoid extra ebmedding and intensive retrival
     phrases= comprehend.detect_key_phrases(Text=prompt, LanguageCode=prompt_lang) ##or 'en'
     keys=[phrase['Text'] for phrase in phrases['KeyPhrases']]
@@ -108,7 +108,7 @@ def search_articles(sites, prompt,prompt_lang, table, bucket_name):
     #4 websearch for 3-5 more articles with semantic similarity websearch
 
     keywords=keys
-    api_key = os.environ.get("BRAVE_API_KEY")
+    api_key = "BSAvATtaHe21yNPssGoIw8tRKGzBhI9"
     tool = BraveSearch.from_api_key(api_key=api_key, search_kwargs={"count": 3})
 
     def extract_article_body(url):
@@ -188,10 +188,10 @@ def translate_prompt(prompt,prompt_lang,new_lang):
     return prompt
 
 #summarize
-def merge(articles,GOOGLE_API_KEY):
+def merge(articles):
 
     llm_sum = GoogleGenerativeAI(model="gemini-2.0-flash",
-                             google_api_key= GOOGLE_API_KEY,
+                             google_api_key= "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A",
                              temperature=0)
 
     chain = load_summarize_chain(llm_sum, chain_type="map_reduce")
