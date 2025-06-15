@@ -50,7 +50,7 @@ import os
 translate = boto3.client('translate', region_name='us-west-2')
 s3= boto3.client('s3', region_name='us-west-2')
 comprehend = boto3.client('comprehend',  region_name='us-west-2')
-dynamodb= boto3.client('dynamodb', region_name='us-west-2')
+dynamodb= boto3.resource('dynamodb', region_name='us-west-2')
 table_name='Keywords'
 table=dynamodb.Table(table_name)
 
