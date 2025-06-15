@@ -83,7 +83,7 @@ def search_articles(sites, prompt,prompt_lang, table, bucket_name, llm):
     items = response['Items']
 
     # Step 3: Filter items that match at least 3 keywords
-        min_items = [item for item in items if len(set(item['Keywords']) & set(search_keywords)) >= 3]
+    min_items = [item for item in items if len(set(item['Keywords']) & set(search_keywords)) >= 3]
 
         # Output the S3 keys
     s3_keys=[]
