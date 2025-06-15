@@ -89,7 +89,8 @@ def get_news_sources(query):
 
     region = topic_region if topic_region else lang_region
     if region in REGIONAL_SITES:
-        websites= REGIONAL_SITES[region]
+        sites= REGIONAL_SITES[region]
+        websites = ", ".join(sites)
         return websites
     else:
         websites = None
