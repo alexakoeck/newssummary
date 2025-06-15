@@ -52,7 +52,7 @@ s3= boto3.client('s3', region_name='us-west-2')
 comprehend = boto3.client('comprehend',  region_name='us-west-2')
 dynamodb= boto3.resource('dynamodb', region_name='us-west-2')
 table_name='Keywords'
-table=dynamodb.table(table_name)
+table=dynamodb.Table(table_name)
 
 #import tool functions
 from ToolsFile import detect_language_region, detect_topic_region_llm, get_news_sources, search_web, search_articles, translate_prompt, translate_articles, merge
