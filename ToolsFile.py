@@ -140,16 +140,25 @@ def search_web(region):
 #def extract summaries
 
 # amazon Kendra not sufficient for real time search so use RAG agent from langchain or haystack
-def search_articles(input): #(sites, prompt,prompt_lang, table, bucket_name):
+def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
+    dynamodb= boto3.resource('dynamodb', region_name='us-west-2')
+    table_name='Keywords'
+    table=dynamodb.Table(table_name)
+    
     import ast
     s = f"{input}"
     data = ast.literal_eval(s)
-    websites = data.get('websites', [])
+    keys=data.keys()
+    sites = data.get(keys[0], )
+    prompt=data.get(keys[1], )
+    prompt_lang=data.get(keys[2],)
+    bucket_name=data.get(keys[3],)
+    
 
-    print(websites)
+    print(sites)
 
  
-    print('test')
+
     
     GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
 
