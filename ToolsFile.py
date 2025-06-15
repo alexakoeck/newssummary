@@ -135,7 +135,7 @@ def search_web(region):
         websites = ast.literal_eval(cleaned)
         return websites
     else:
-        return 'try again with different prompt'
+        return 'try again with broader prompt'
 
 #def extract summaries
 
