@@ -234,7 +234,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
         handle_parsing_error=True,
         verbose=True)
 
-    response = agent.invoke(f"List at least one most matching general and specific and recent (not older than 6 months)news articles from and only from{sites} matching {prompt} as good as possible\n if no matches for teh prompt try these keywords{keywords} in form of a python list")
+    response = agent.invoke(f"List at least 1 matching general or specific and recent news articles (not older than 6 months) from and only from{sites} matching {prompt} as good as possible") #\n if no matches for teh prompt try these keywords{keywords} in form of a python list")
     output= response['output']
 
 
