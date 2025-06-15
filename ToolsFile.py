@@ -104,7 +104,7 @@ def search_web(region):
 
     llm = GoogleGenerativeAI(
         model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
-        google_api_key=GOOGLE_API_KEY, temperature=0.1
+        google_api_key=GOOGLE_API_KEY
     )
     
     api_key = "BSAvATtaHe21yNPssGoIw8tRKGzBhI9"
