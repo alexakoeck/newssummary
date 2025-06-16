@@ -84,7 +84,9 @@ s3_key=topic + '.json'
 table.put_item(
     Item={
         "Keywords": keys,
-        "S3Key": s3_key
+        "S3Key": s3_key,
+        'PromptLanguage': 'en',
+        'Date': '2002'
     }
 )
 
