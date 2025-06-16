@@ -4,16 +4,9 @@ from summary import response
 app = FastAPI()
 
 @app.get("/")
-def read_root():
-    return {"message": "FastAPI is working!"}
-
-@app.post("/predict")
-async def predict(request: Request):
-    data = await request.json()
-    prompt = data.get("prompt", "")
-    from summary import response
-    result = response(prompt)
-    return {"summary": result}
+def read_data(data: str | None = None):
+    response= response(data)
+    return {"summary": response}
 
 # Optional for direct run
 if __name__ == "__main__":
