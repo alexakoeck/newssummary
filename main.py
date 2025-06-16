@@ -174,15 +174,13 @@ doc = nlp(response)
 
 # Extract named entities
 entities = [(ent.text, ent.label_) for ent in doc.ents]
-print(entities)
 # Optionally filter by entity types
 important_types = {"PERSON", "ORG", "GPE","LOC"} ##not date
 keylist = [ent.text for ent in doc.ents if ent.label_ in important_types]
 
 topic= "_".join(keylist)
 ## will be really long but needs to be higher chance of not exact match because otehrvise response will be replaced in S3
-print(topic)
-print('test2')
+
 #create json
 data={
     "prompt": query,
@@ -214,7 +212,7 @@ table.put_item(
 )
 
 print(response)
-print(d3_key)
+print(s3_key)
 
 ### one benefit we create small but easy understandable news sumamrization archive sorted by prompt,region and topic,
 
