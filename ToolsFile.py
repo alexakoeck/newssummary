@@ -29,7 +29,7 @@ import os
 from langdetect import detect
 REGIONAL_SITES = {
     "GB": ["bbc.com", "theguardian.com"],
-    "DE": ["spiegel.de", "zeit.de", "tagesschau.de"],
+    "DE": ["sueddeutsche.de", "zeit.de", "tagesschau.de"],
     "KR": ["yonhapnews.co.kr", "koreatimes.co.kr"]
 }
 
