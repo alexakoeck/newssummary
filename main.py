@@ -180,7 +180,7 @@ print(response)  ##for checking
 #key_phrases= comprehend.detect_key_phrases(Text=response, LanguageCode=prompt_lang) ##or 'en'
 #keystring=[phrase['Text'] for phrase in key_phrases['KeyPhrases']]
 
-
+print('test1')
 # Load the English model
 nlp = spacy.load("en_core_web_sm")
 # Process the text
@@ -188,14 +188,15 @@ doc = nlp(query)
 
 # Extract named entities
 entities = [(ent.text, ent.label_) for ent in doc.ents]
-
+print(enteties)
 # Optionally filter by entity types
 important_types = {"PERSON", "ORG", "GPE","LOC"} ##not date
 keylist = [ent.text for ent in doc.ents if ent.label_ in important_types]
 
 topic= "_".join(keylist)
 ## will be really long but needs to be higher chance of not exact match because otehrvise response will be replaced in S3
-
+print(topic)
+print('test2')
 #create json
 data={
     "prompt": query,
