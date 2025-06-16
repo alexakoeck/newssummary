@@ -225,7 +225,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     tools=[Tool(
         name="BraveSearchArticles",
         func=tool.run,
-        description="Useful for finding news articles from predefined websites."
+        description="needs string input! Useful for finding news articles from predefined websites."
         )]
 
     agent = initialize_agent(
