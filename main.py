@@ -165,21 +165,6 @@ print(response)  ##for checking
 
 # either have saved or detect response language and check if output matches othervise translate
 
-# trasnlate response to initial prompt language ## not needed maybe
-#trans_resp= translate.translate_text(Text=response, SourceLanguageCode=reponse_lang,TragetLanguageCode=prompt_lang)
-#fin_rep=trans_resp['TranslatedText']
-
-##extract region from agent response
-
-#create thumbnail
-#
-
-#step 5 call push to S3 function (prompts, image, text, region)
-#extract topic
-#prompt_topic=f'extract the topic in less than 10 words from the following text {response}'
-#topic_string=llm.invoke(prompt_topic)
-#key_phrases= comprehend.detect_key_phrases(Text=response, LanguageCode=prompt_lang) ##or 'en'
-#keystring=[phrase['Text'] for phrase in key_phrases['KeyPhrases']]
 
 print('test1')
 # Load the English model
@@ -189,7 +174,7 @@ doc = nlp(query)
 
 # Extract named entities
 entities = [(ent.text, ent.label_) for ent in doc.ents]
-print(enteties)
+print(entities)
 # Optionally filter by entity types
 important_types = {"PERSON", "ORG", "GPE","LOC"} ##not date
 keylist = [ent.text for ent in doc.ents if ent.label_ in important_types]
