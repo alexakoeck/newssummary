@@ -235,7 +235,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
         handle_parsing_error=True,
         verbose=True)
 
-    response = agent.invoke(f"List at least 1 general or specific news article URL (not older than 6 months)  from{sites} matching {prompt} in form of a python list") #\n if no matches for teh prompt try these keywords{keywords} in form of a python list")
+    response = agent.invoke(f"List at least 1 and no more than 7 general or specific news article URL (not older than 6 months)  from{sites} matching {prompt} in form of a python list") #\n if no matches for teh prompt try these keywords{keywords} in form of a python list")
     output= response['output']
 
 
@@ -293,11 +293,10 @@ def translate_prompt(prompt,prompt_lang,new_lang):
     return prompt
 
 #summarize
-def merge(articles):
-
+def merge(articles):    
 # If you have a list of strings:
     text_list = articles
-
+    
 # Convert to Document objects:
     docs = [Document(page_content=text) for text in text_list]
 
