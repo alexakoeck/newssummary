@@ -5,6 +5,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_data(data: str | None = None):
+    print(data)
     response= response(data)
     return {"summary": response}
 
