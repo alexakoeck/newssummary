@@ -302,7 +302,7 @@ def merge(articles):
     docs = [Document(page_content=text) for text in text_list]
 
     llm_sum = GoogleGenerativeAI(model="gemini-2.0-flash",
-                             google_api_key= "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A",
+                             google_api_key= "AIzaSyAQXXXGa-u5bYIcEr09aNXytaJNan1IIWA",
                              temperature=0)
 
     chain = load_summarize_chain(llm_sum, chain_type="map_reduce")
