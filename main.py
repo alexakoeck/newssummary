@@ -12,6 +12,7 @@ import spacy
 import boto3
 from boto3.dynamodb.conditions import Attr
 import json
+from datetime import datetime
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 import warnings
@@ -212,12 +213,18 @@ push_to_S3(json_file,topic)
 
 #put keywords and s3 key to dynamo db for rag
 
+
+current_time = datetime.now()
+time_str = current_time.strftime("%Y-%m-%d %H:%M:%S")
+
 keys=keylist
 s3_key=f'{topic}.json'
 table.put_item(
     Item={
         "Keywords": keys,
-        "S3Key": s3_key
+        "S3Key": s3_key,
+        'PromptLanguage': prompt_lang,
+        'Date': time_str
     }
 )
 
