@@ -203,13 +203,14 @@ data={
     #"thumbnail": thumbnail,
     #"region": region
 }
-
+print(data)
 json_file=json.dumps(data)
 push_to_S3(json_file,topic)
 
 
 
 #put keywords and s3 key to dynamo db for rag
+
 keys=keylist
 s3_key=f'{topic}.json'
 table.put_item(
@@ -220,6 +221,7 @@ table.put_item(
 )
 
 print(response)
+print(d3_key)
 
 ### one benefit we create small but easy understandable news sumamrization archive sorted by prompt,region and topic,
 
