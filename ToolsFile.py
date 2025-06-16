@@ -308,7 +308,7 @@ def merge(articles):
 def push_to_S3(json_file, topic):
 
     bucket_name='newssummariesagentprojectdl'
-    object_key= f'{topic}.json'
+    object_key= topic + '.json'
     content=json_file
 
     s3.put_object(Bucket=bucket_name, Key=object_key, Body=content)
