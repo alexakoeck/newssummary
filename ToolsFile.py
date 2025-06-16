@@ -114,7 +114,7 @@ def search_web(region):
     tools=[Tool(
         name="BraveSearch",
         func=search.run,
-        description="Useful for finding which news organizations are considered reliable in a country."
+        description="Useful for finding which news websites are considered reliable in a country."
     )]
 
     agent = initialize_agent(
