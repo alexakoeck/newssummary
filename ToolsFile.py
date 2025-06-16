@@ -8,6 +8,7 @@ Original file is located at
 """
 import boto3
 from boto3.dynamodb.conditions import Attr
+from langchain_core.documents import Document
 import json
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -294,12 +295,18 @@ def translate_prompt(prompt,prompt_lang,new_lang):
 #summarize
 def merge(articles):
 
+# If you have a list of strings:
+    text_list = aricles
+
+# Convert to Document objects:
+    docs = [Document(page_content=text) for text in text_list]
+
     llm_sum = GoogleGenerativeAI(model="gemini-2.0-flash",
                              google_api_key= "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A",
                              temperature=0)
 
     chain = load_summarize_chain(llm_sum, chain_type="map_reduce")
-    summary = chain.run(articles)
+    summary = chain.run(docs)
 
     return summary ##maybe in eng
 
