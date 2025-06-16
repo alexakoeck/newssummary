@@ -296,7 +296,7 @@ def translate_prompt(prompt,prompt_lang,new_lang):
 def merge(articles):
 
 # If you have a list of strings:
-    text_list = aricles
+    text_list = articles
 
 # Convert to Document objects:
     docs = [Document(page_content=text) for text in text_list]
