@@ -59,7 +59,7 @@ def push_to_S3(json_file, topic):
     #return image
 query='what is testing worth?'
 keylist = ['test','for','DB','interaction']
-response:'everything'
+response='everything'
 topic= "_".join(keylist)
 ## will be really long but needs to be higher chance of not exact match because otehrvise response will be replaced in S3
 print(topic)
