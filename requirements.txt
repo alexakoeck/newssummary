@@ -1,0 +1,11 @@
+langchain
+langchain-core 
+langchain-community 
+langchain-google-genai 
+langchain-openai 
+langdetect 
+newspaper3k 
+requests 
+lxml 
+lxml_html_clean 
+spacy
