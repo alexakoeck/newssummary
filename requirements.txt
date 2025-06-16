@@ -9,3 +9,6 @@ requests
 lxml 
 lxml_html_clean 
 spacy
+fastapi
+uvicorn
+
