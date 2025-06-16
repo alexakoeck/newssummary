@@ -1,13 +1,13 @@
 from fastapi import FastAPI, Request
 import uvicorn
-from summary import response
+from summary import final
 app = FastAPI()
 
 @app.get("/")
 def read_data(data: str | None = None):
     print(data)
-    response= response(data)
-    return {"summary": response}
+    response= final(data)
+    return  f'summary: {response}'
 
 
 # Optional for direct run
