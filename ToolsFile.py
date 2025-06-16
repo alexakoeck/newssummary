@@ -109,12 +109,12 @@ def search_web(region):
     )
     
     api_key = "BSAvATtaHe21yNPssGoIw8tRKGzBhI9"
-    search = BraveSearch.from_api_key(api_key=api_key, search_kwargs={"count": 3})
+    search = BraveSearch.from_api_key(api_key=api_key)
 
     tools=[Tool(
         name="BraveSearch",
         func=search.run,
-        description="Useful for finding which news websites are considered reliable in a country."
+        description=" need careful input string and is Useful for finding which news websites are considered reliable in a country."
     )]
 
     agent = initialize_agent(
