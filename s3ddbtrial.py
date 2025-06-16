@@ -91,6 +91,6 @@ table.put_item(
 )
 
 print(response)
-print(d3_key)
+print(s3_key)
 
 ### one benefit we create smal
