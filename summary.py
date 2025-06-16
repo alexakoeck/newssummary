@@ -49,6 +49,7 @@ table=dynamodb.Table(table_name)
 
 #import tool functions
 from ToolsFile import push_to_S3, detect_language_region, detect_topic_region_llm, get_news_sources, search_web, search_articles, translate_prompt, translate_articles, merge
+
 def response(input):
     query = input
 
