@@ -305,7 +305,7 @@ def merge(articles):
                              temperature=0)
 
     chain = load_summarize_chain(llm_sum, chain_type="map_reduce")
-    summary = chain.run(docs)
+    summary = chain.invoke(docs)
 
     return summary ##maybe in eng
 
