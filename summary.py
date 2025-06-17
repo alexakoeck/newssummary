@@ -153,12 +153,12 @@ def final(input):
 
 
     response=agent.invoke(prompt.format(input = query))['output'] ##only response text
-    print(response)  ##for checking
+    #print(response)  ##for checking
 
 # either have saved or detect response language and check if output matches othervise translate
 
 
-    print('test1')
+    #print('test1')
 # Load the English model
     nlp = spacy.load("en_core_web_sm")
 # Process the text
