@@ -7,7 +7,7 @@ app = FastAPI()
 def read_data(data: str | None = None):
     print(data)
     response= final(data)
-    return  response
+    return {'summary': response}
 
 
 # Optional for direct run
