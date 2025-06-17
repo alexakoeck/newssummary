@@ -50,7 +50,7 @@ def detect_language_region(text):
     GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
 
     llm = GoogleGenerativeAI(
-        model="gemini-1.5-pro", ##test gemini-pro maybe better model available in AWS!!
+        model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
         google_api_key=GOOGLE_API_KEY
     )
     try:
@@ -69,7 +69,7 @@ def detect_topic_region_llm(query):
     GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
 
     llm = GoogleGenerativeAI(
-        model="gemini-1.5-pro", ##test gemini-pro maybe better model available in AWS!!
+        model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
         google_api_key=GOOGLE_API_KEY
     )
     prompt = f"What country is this query about? Reply with only the 2-letter ISO country code.\n\nQuery: {query}"
@@ -161,7 +161,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
 
     llm = GoogleGenerativeAI(
-        model="gemini-1.5-flash", ##test gemini-pro maybe better model available in AWS!!
+        model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
         google_api_key=GOOGLE_API_KEY
     )
     keywo = prompt.split()
