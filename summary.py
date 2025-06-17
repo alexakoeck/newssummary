@@ -97,7 +97,7 @@ def final(input):
             2. Find websites using FindAdditionalWebsites: Identify reliable websites using the FindRegion or FindAdditionalWebsites tools only.
             3. Retrieve relevant news articles from web and your databases matching the prompts only from the previously defined websites
             4. Sometimes you want to match the language of the articles for better summarization
-            5. Summarize the information from all selected articles in a clear, factual, and concise manner using the same language as the query.
+            5. if still too long Summarize the information from all selected articles in a clear, factual, and concise manner using the same language as the query.
             6. Provide the short summary and sources of the information readable in 2 minutes.
 
             after each step you should evaluate and if the results are not sufficient repeat some steps.
