@@ -304,7 +304,7 @@ def merge(articles):
 # Convert to Document objects:
     docs = [Document(page_content=text) for text in text_list]
 
-    llm_sum = GoogleGenerativeAI(model="gemini-2-flash",
+    llm_sum = GoogleGenerativeAI(model="gemini-2.0-flash",
                              google_api_key= "AIzaSyAQXXXGa-u5bYIcEr09aNXytaJNan1IIWA",
                              temperature=0)
 
