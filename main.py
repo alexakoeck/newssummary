@@ -3,7 +3,7 @@ import uvicorn
 from summary import final
 app = FastAPI()
 
-@app.post("/")
+@app.get("/")
 def read_data(data: str | None = None):
     print(data)
     response= final(data)
