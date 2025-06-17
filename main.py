@@ -3,11 +3,11 @@ import uvicorn
 from summary import final
 app = FastAPI()
 
-@app.get("/")
+@app.post("/")
 def read_data(data: str | None = None):
     print(data)
     response= final(data)
-    return  f'summary: {response}'
+    return  response
 
 
 # Optional for direct run
