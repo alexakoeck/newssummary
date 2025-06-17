@@ -5,3 +5,5 @@ A news summarization agentic system for AWS environment using S3 and DynamoDB fo
 sudo apt update && sudo apt install python3-pip -y
 
 pip3 install -r requirements.txt --break-system-packages
+
+python3 -m spacy download en_core_web_sm --break-system-packages
