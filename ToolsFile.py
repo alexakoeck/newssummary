@@ -26,6 +26,8 @@ import requests
 from newspaper import Article
 from langchain_community.utilities import GoogleSerperAPIWrapper
 import os
+import time
+
 from langdetect import detect
 REGIONAL_SITES = {
     "GB": ["bbc.com", "theguardian.com"],
@@ -100,6 +102,7 @@ def get_news_sources(query):
 
 ##if websites is empty search web for reliabel websites make more flexible
 def search_web(region):
+    time.sleep(10) 
     ##brave search
     GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
 
@@ -293,7 +296,8 @@ def translate_prompt(prompt,prompt_lang,new_lang):
     return prompt
 
 #summarize
-def merge(articles):    
+def merge(articles): 
+    time.sleep(10) 
 # If you have a list of strings:
     text_list = articles
     
