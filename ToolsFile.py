@@ -297,14 +297,14 @@ def translate_prompt(prompt,prompt_lang,new_lang):
 
 #summarize
 def merge(articles): 
-    time.sleep(10) 
+    #time.sleep(60) 
 # If you have a list of strings:
-    text_list = articles
+    text_list = articles[:5]
     
 # Convert to Document objects:
     docs = [Document(page_content=text) for text in text_list]
 
-    llm_sum = GoogleGenerativeAI(model="gemini-1.5-pro",
+    llm_sum = GoogleGenerativeAI(model="gemini-2-flash",
                              google_api_key= "AIzaSyAQXXXGa-u5bYIcEr09aNXytaJNan1IIWA",
                              temperature=0)
 
