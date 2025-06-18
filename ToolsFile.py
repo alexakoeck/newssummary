@@ -102,9 +102,9 @@ def get_news_sources(query):
 
 ##if websites is empty search web for reliabel websites make more flexible
 def search_web(region):
-    time.sleep(10) 
+    #time.sleep(10) 
     ##brave search
-    GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
+    GOOGLE_API_KEY = "AIzaSyAQXXXGa-u5bYIcEr09aNXytaJNan1IIWA"
 
     llm = GoogleGenerativeAI(
         model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
