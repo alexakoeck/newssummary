@@ -137,7 +137,7 @@ def search_web(region):
         # Remove comments (everything after # on each line)
         cleaned = "\n".join([line.split("#")[0].strip() for line in code_block.splitlines()])
         websites = ast.literal_eval(cleaned)
-        return list(websites)
+        return websites
     else:
         return 'try again with broader prompt'
 
