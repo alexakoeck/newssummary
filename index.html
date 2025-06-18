@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News Summarizer</title>
+</head>
+<body>
+  <h1>Enter Prompt</h1>
+  <input type="text" id="data" placeholder="e.g., News about Merz in June" />
+  <button onclick="sendPrompt()">Summarize</button>
+
+  <p><strong>Summary:</strong> <span id="response"></span></p>
+
+  <script>
+    async function sendPrompt() {
+      const dataInput = document.getElementById('data').value;
+      try {
+        const response = await fetch('https://lm9xph2hqd.execute-api.us-west-2.amazonaws.com/dev/?data=' + encodeURIComponent(prompt));
+        const result = await response.json();
+        document.getElementById('response').textContent = result.result || JSON.stringify(result);
+      } catch (error) {
+        document.getElementById('response').textContent = "Error: " + error.message;
+      }
+    }
+  </script>
+</body>
+</html>
