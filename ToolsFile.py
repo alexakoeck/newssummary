@@ -156,8 +156,8 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     data = ast.literal_eval(s)
     keys=list(data.keys())
     sites = data.get(keys[0], )
-    if type(sites) != list:
-        sites=sites.split(',')
+    #if type(sites) != list:
+       #sites=sites.split(',')
     prompt=data.get(keys[1], )
     prompt_lang=data.get(keys[2],)
 
