@@ -123,7 +123,7 @@ def final(input):
         Tool(
             name='NewsArticleSearch',
             func=search_articles,
-            description='input needs : websites, query and the prompt_lang code. this tool is for article retrival and lets you search for previous responses matching the prompt and new articles from predefined websites.'
+            description='input needs : { websites, query and the prompt_lang code} separated by comma. this tool is for article retrival and lets you search for previous responses matching the prompt and new articles from predefined websites.'
     ),
         Tool(
             name='TranslateArticles',
