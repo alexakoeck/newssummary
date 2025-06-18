@@ -2,26 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>News Summarizer</title>
+  <title>AI Prompt Summary</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #333;
+    }
+    input[type="text"] {
+      width: 70%;
+      padding: 10px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #response {
+      margin-top: 20px;
+      font-size: 18px;
+      white-space: pre-wrap;
+    }
+  </style>
 </head>
 <body>
-  <h1>Enter Prompt</h1>
-  <input type="text" id="data" placeholder="e.g., News about Merz in June" />
-  <button onclick="sendPrompt()">Summarize</button>
 
-  <p><strong>Summary:</strong> <span id="response"></span></p>
+<h1>Enter a Prompt</h1>
 
-  <script>
-    async function sendPrompt() {
-      const dataInput = document.getElementById('data').value;
-      try {
-        const response = await fetch(f'https://lm9xph2hqd.execute-api.us-west-2.amazonaws.com/dev/?data=${encodeURIComponent(dataInput)}');
-        const result = await response.json();
-        document.getElementById('response').textContent = result.result || JSON.stringify(result);
-      } catch (error) {
-        document.getElementById('response').textContent = "Error: " + error.message;
-      }
+<input id="userInput" type="text" placeholder="Type your prompt here" />
+<button onclick="sendToAPI()">Submit</button>
+
+<div id="response"></div>
+
+<script>
+  async function sendToAPI() {
+    const inputText = document.getElementById("userInput").value;
+    const apiUrl = "https://YOUR_API_GATEWAY_URL_HERE?data=" + encodeURIComponent(inputText);
+
+    try {
+      const res = await fetch(apiUrl);
+      if (!res.ok) throw new Error("Network response was not OK");
+
+      const result = await res.json();
+      document.getElementById("response").textContent = "Summary: " + JSON.stringify(result);
+    } catch (error) {
+      document.getElementById("response").textContent = "Error: " + error.message;
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
