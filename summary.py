@@ -95,7 +95,7 @@ def final(input):
             For each input query, follow these reasoning steps:
             1. you need to detect the region boud to topics in the promt (use 'FindRegion' Tool)
             2. Find websites using FindAdditionalWebsites: Identify reliable websites using the FindRegion or FindAdditionalWebsites tools only.
-            3. Retrieve relevant news articles from web and your databases matching the prompts only from the previously defined websites
+            3. Retrieve relevant and available (working URL) news articles from web and your databases matching the prompts only from the previously defined websites
             4. Sometimes you want to match the language of the articles for better summarization
             5. if still too long Summarize the information from all selected articles in a clear, factual, and concise manner using the same language as the query.
             6. Provide the short summary and sources of the information in the prompt language readable in 2 minutes.
