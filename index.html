@@ -15,7 +15,7 @@
     async function sendPrompt() {
       const dataInput = document.getElementById('data').value;
       try {
-        const response = await fetch('https://lm9xph2hqd.execute-api.us-west-2.amazonaws.com/dev/?data=' + encodeURIComponent(prompt));
+        const response = await fetch('https://lm9xph2hqd.execute-api.us-west-2.amazonaws.com/dev/?data=' + encodeURIComponent(dataInput));
         const result = await response.json();
         document.getElementById('response').textContent = result.result || JSON.stringify(result);
       } catch (error) {
