@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request
 import uvicorn
+from fastapi.middleware.cors import CORSMiddleware
 from summary import final
 app = FastAPI()
 
