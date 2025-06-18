@@ -48,7 +48,7 @@
 <script>
   async function sendToAPI() {
     const inputText = document.getElementById("userInput").value;
-    const apiUrl = "https://YOUR_API_GATEWAY_URL_HERE?data=" + encodeURIComponent(inputText);
+    const apiUrl = "https://lm9xph2hqd.execute-api.us-west-2.amazonaws.com/dev/data=" + encodeURIComponent(inputText);
 
     try {
       const res = await fetch(apiUrl);
