@@ -83,7 +83,7 @@ def get_news_sources(query):
     GOOGLE_API_KEY = "AIzaSyAQXXXGa-u5bYIcEr09aNXytaJNan1IIWA"
 
     llm = GoogleGenerativeAI(
-        model="gemini-1.5-pro-latest", ##test gemini-pro maybe better model available in AWS!!
+        model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
         google_api_key=GOOGLE_API_KEY
     )
     lang_region = detect_language_region(query)
@@ -104,10 +104,10 @@ def get_news_sources(query):
 def search_web(region):
     time.sleep(10) 
     ##brave search
-    GOOGLE_API_KEY = "AIzaSyAQXXXGa-u5bYIcEr09aNXytaJNan1IIWA"
+    GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
 
     llm = GoogleGenerativeAI(
-        model="gemini-1.5-pro-latest", ##test gemini-pro maybe better model available in AWS!!
+        model="gemini-2.0-flash", ##test gemini-pro maybe better model available in AWS!!
         google_api_key=GOOGLE_API_KEY
     )
     
@@ -127,7 +127,7 @@ def search_web(region):
         handle_parsing_errors=True,
         verbose=False)
 
-    response = agent.invoke(f"List at least 1 and at most 4 trusted news outlets in {region} in any language and give their URLs in form of a python list with maximal length 10.")
+    response = agent.invoke(f"with as little trials as possible List at least 1 and at most 4 trusted news outlets in {region} in any language and give their URLs in form of a python list with maximal length 10.")
     output= response['output']
     ##extract the website URLs in a LIst that can be passed to kendra as the predefined ones
 
