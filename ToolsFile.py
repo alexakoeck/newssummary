@@ -257,7 +257,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     if len(websites) >= 1:
         for url in websites[:7]:
             doc=extract_article_body(url)
-            if doc['text']:
+            if 'text' in doc:
                 web_articles.append(doc['text'])
 
     #6 merge two lists ##if time only select 5 pest out of all only if list length is over 7
