@@ -83,7 +83,7 @@ def get_news_sources(query):
     GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
 
     llm = GoogleGenerativeAI(
-        model="gemini-2.0-pro", ##test gemini-pro maybe better model available in AWS!!
+        model="gemini-pro", ##test gemini-pro maybe better model available in AWS!!
         google_api_key=GOOGLE_API_KEY
     )
     lang_region = detect_language_region(query)
@@ -107,7 +107,7 @@ def search_web(region):
     GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
 
     llm = GoogleGenerativeAI(
-        model="gemini-2.0-pro", ##test gemini-pro maybe better model available in AWS!!
+        model="gemini-pro", ##test gemini-pro maybe better model available in AWS!!
         google_api_key=GOOGLE_API_KEY
     )
     
