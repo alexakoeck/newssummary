@@ -183,7 +183,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     items = response['Items']
 
     # Step 3: Filter items that match at least 3 keywords
-    min_items = [item for item in items if len(set(item['Keywords']) & set(search_keywords)) >= 1]
+    min_items = [item for item in items if len(set(item['Keywords']) & set(search_keywords)) >= 2]
 
         # Output the S3 keys
     s3_keys=[]
@@ -203,6 +203,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
         if summary:
             s3_summs.append(summary)
 
+    s3_summs_2=s3_sums[:2]
     #4 websearch for 3-5 more articles with semantic similarity websearch
 
     keywords=keys
@@ -257,7 +258,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
             web_articles.append(doc['text'])
 
     #6 merge two lists ##if time only select 5 pest out of all only if list length is over 7
-    articles= s3_summs+web_articles
+    articles= s3_summs_2+web_articles
     if len(articles) >= 1 : ##reached already
         return articles ## should be in form of list of strings
     else:
