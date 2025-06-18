@@ -137,7 +137,7 @@ def search_web(region):
         # Remove comments (everything after # on each line)
         cleaned = "\n".join([line.split("#")[0].strip() for line in code_block.splitlines()])
         websites = ast.literal_eval(cleaned)
-        return websites
+        return list(websites)
     else:
         return 'try again with broader prompt'
 
@@ -156,6 +156,8 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     data = ast.literal_eval(s)
     keys=list(data.keys())
     sites = data.get(keys[0], )
+    if type(sites) != list:
+        sites=sites.split(',')
     prompt=data.get(keys[1], )
     prompt_lang=data.get(keys[2],)
 
