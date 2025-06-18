@@ -83,7 +83,7 @@
         // Show the summary or whole JSON
         resultArea.textContent = data.summary || JSON.stringify(data, null, 2);
       } catch (err) {
-        resultArea.textContent = 'Error: ' + err.message;
+        resultArea.textContent = 'Error: ' + err.message +'\nTry again :(';
       }
     }
 
