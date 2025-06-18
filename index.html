@@ -1,66 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AI Prompt Summary</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 2em;
-      background-color: #f9f9f9;
-    }
-    h1 {
-      color: #333;
-    }
-    input[type="text"] {
-      width: 70%;
-      padding: 10px;
-      font-size: 16px;
-      margin-right: 10px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
-    #response {
-      margin-top: 20px;
-      font-size: 18px;
-      white-space: pre-wrap;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <title>Simple API Caller</title>
 </head>
 <body>
+  <h2>Enter query to get summary</h2>
+  <input type="text" id="queryInput" placeholder="Type something..." size="40" />
+  <button id="fetchBtn">Submit</button>
 
-<h1>Enter a Prompt</h1>
+  <h3>Result:</h3>
+  <pre id="resultArea" style="white-space: pre-wrap; border: 1px solid #ccc; padding: 10px;"></pre>
 
-<input id="userInput" type="text" placeholder="Type your prompt here" />
-<button onclick="sendToAPI()">Submit</button>
+  <script>
+    async function fetchSummary() {
+      const query = document.getElementById('queryInput').value.trim();
+      const resultArea = document.getElementById('resultArea');
 
-<div id="response"></div>
+      if (!query) {
+        resultArea.textContent = 'Please enter a query.';
+        return;
+      }
 
-<script>
-  async function sendToAPI() {
-    const inputText = document.getElementById("userInput").value;
-    const apiUrl = "https://lm9xph2hqd.execute-api.us-west-2.amazonaws.com/dev/?data=" + inputText;
+      const encodedQuery = encodeURIComponent(query);
+      const url = `https://lm9xph2hqd.execute-api.us-west-2.amazonaws.com/dev/?data=${encodedQuery}`;
 
-    try {
-      const res = await fetch(apiUrl);
-      if (!res.ok) throw new Error("Network response was not OK");
+      resultArea.textContent = 'Loading...';
 
-      const result = await res.json();
-      document.getElementById("response").textContent = "Summary: " + JSON.stringify(result);
-    } catch (error) {
-      document.getElementById("response").textContent = "Error: " + error.message;
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+        const data = await response.json();
+
+        // Show the summary or whole JSON
+        resultArea.textContent = data.summary || JSON.stringify(data, null, 2);
+      } catch (err) {
+        resultArea.textContent = 'Error: ' + err.message;
+      }
     }
-  }
-</script>
 
+    document.getElementById('fetchBtn').addEventListener('click', fetchSummary);
+
+    // Optional: allow pressing Enter key in input to trigger fetch
+    document.getElementById('queryInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') fetchSummary();
+    });
+  </script>
 </body>
 </html>
+
