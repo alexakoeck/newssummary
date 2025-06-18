@@ -80,10 +80,10 @@ def detect_topic_region_llm(query):
     return code #if code in REGIONAL_SITES else None
 
 def get_news_sources(query):
-    GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
+    GOOGLE_API_KEY = "AIzaSyCeHXDnkUCFatpjtGi-Ab7RwMsUMb0R6gw"
 
     llm = GoogleGenerativeAI(
-        model="gemini-pro", ##test gemini-pro maybe better model available in AWS!!
+        model="gemini-1.5-pro-latest", ##test gemini-pro maybe better model available in AWS!!
         google_api_key=GOOGLE_API_KEY
     )
     lang_region = detect_language_region(query)
@@ -104,10 +104,10 @@ def get_news_sources(query):
 def search_web(region):
     time.sleep(10) 
     ##brave search
-    GOOGLE_API_KEY = "AIzaSyBYT_gvrgceKBEl5-2X5lu5k0s9NS2iV-A"
+    GOOGLE_API_KEY = "AIzaSyCeHXDnkUCFatpjtGi-Ab7RwMsUMb0R6gw"
 
     llm = GoogleGenerativeAI(
-        model="gemini-pro", ##test gemini-pro maybe better model available in AWS!!
+        model="gemini-1.5-pro-latest", ##test gemini-pro maybe better model available in AWS!!
         google_api_key=GOOGLE_API_KEY
     )
     
