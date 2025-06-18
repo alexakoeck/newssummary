@@ -3,6 +3,14 @@ import uvicorn
 from summary import final
 app = FastAPI()
 
+# ✅ Register CORS middleware FIRST
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], 
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.get("/")
 def read_data(data: str | None = None):
     print(data)
