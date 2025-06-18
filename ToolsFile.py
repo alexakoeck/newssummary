@@ -155,7 +155,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
     s = f"{input}"
     data = ast.literal_eval(s)
     keys=list(data.keys())
-    sites = data.get(keys[0], )
+    sites = data.get(keys[0], )[:5]
     #if type(sites) != list:
        #sites=sites.split(',')
     prompt=data.get(keys[1], )
@@ -256,7 +256,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
         websites = ast.literal_eval(cleaned)
     if len(websites) >= 1:
         for url in websites[:7]:
-            if 'reuters' not in url:
+            if 'reuters' not in url and doc != None:
                 doc=extract_article_body(url)
                 web_articles.append(doc['text'])
 
