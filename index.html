@@ -18,7 +18,7 @@
     input[type="text"] {
       padding: 8px 12px;
       font-size: 16px;
-      width: 300px;
+      width: 500px;
       max-width: 90%;
       margin-right: 10px;
       border: 1px solid #ccc;
@@ -77,13 +77,13 @@
 
       try {
         const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+        if (!response.ok) throw new Error(`HTTP error ${response.status}, website offline`);
         const data = await response.json();
 
         // Show the summary or whole JSON
         resultArea.textContent = data.summary || JSON.stringify(data, null, 2);
       } catch (err) {
-        resultArea.textContent = 'Error: ' + err.message +'\nTry again :(';
+        resultArea.textContent = 'Error: ' + err.message +'\nTry again later :(';
       }
     }
 
