@@ -203,7 +203,7 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
         if summary:
             s3_summs.append(summary)
 
-    s3_summs_2=s3_sums[:2]
+    s3_summs_2=s3_summs[:2]
     #4 websearch for 3-5 more articles with semantic similarity websearch
 
     keywords=keys
