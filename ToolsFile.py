@@ -253,9 +253,10 @@ def search_articles(input): #(sites, prompt,prompt_lang, bucket_name):
         cleaned = "\n".join([line.split("#")[0].strip() for line in code_block.splitlines()])
         websites = ast.literal_eval(cleaned)
     if len(websites) >= 1:
-        for url in websites:
+        for url in websites[:7]:
             doc=extract_article_body(url)
-            web_articles.append(doc['text'])
+            if doc['text':
+                web_articles.append(doc['text'])
 
     #6 merge two lists ##if time only select 5 pest out of all only if list length is over 7
     articles= s3_summs_2+web_articles
