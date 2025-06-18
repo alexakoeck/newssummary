@@ -32,7 +32,7 @@ from langdetect import detect
 REGIONAL_SITES = {
     "GB": ["bbc.com", "theguardian.com"],
     "DE": ["sueddeutsche.de", "zeit.de", "tagesschau.de"],
-    "KR": ["yonhapnews.co.kr", "koreatimes.co.kr"]
+    "KR": ["www.chosun.com","chosun.com/english", "koreatimes.co.kr"]
 }
 
 LANG_TO_REGION = {
